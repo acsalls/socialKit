@@ -2,28 +2,22 @@
 
 <h1>Contacts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.user.email if contact.user %></td>
-        <td><%= contact.description %></td>
-        <td><%= link_to 'Show', contact %></td>
+<div id="contacts" class="transitions-enabled">
+  <% @contacts.each do |contact| %>
+    <div class="box panel panel-default">
+     <div class="panel-body">
+        <%= contact.description %>
+        <%= contact.user.email if contact.user %>
+        <%= link_to 'Show', contact_path(contact) %>
         <% if contact.user == current_user %>
-          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-          <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= link_to 'Edit', edit_contact_path(contact) %>
+          <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
 
