@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :contacts
   devise_for :users
-  root 'pages#home'
+  #root 'pages#home'
+  root 'contacts#index'
 
   get "about" => "pages#about"
 

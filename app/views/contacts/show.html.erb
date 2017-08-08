@@ -1,11 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @contact.description %>
-</p>
-
-<% if @contact.user == current_user %>
-  <%= link_to 'Edit', edit_contact_path(@contact) %> 
-<% end %>  
 <%= link_to 'Back', contacts_path %>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        TEST
+      </div>
+      <div class="panel-body">
+        <p><%= @contact.description %></p>
+        <p><strong><%= @contact.user.email if @contact.user %></strong></p>
+
+        <% if @contact.user == current_user %>
+          <%= link_to edit_contact_path(@contact) do %>
+            <span class="glyphicon glyphicon-edit"></span>
+            Edit
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+

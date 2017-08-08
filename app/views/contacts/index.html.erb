@@ -1,3 +1,5 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Contacts</h1>
@@ -8,11 +10,17 @@
     <div class="box panel panel-default">
      <div class="panel-body">
         <%= contact.description %>
-        <%= contact.user.email if contact.user %>
+        <strong><%= contact.user.email if contact.user %></strong>
         <%= link_to 'Show', contact_path(contact) %>
         <% if contact.user == current_user %>
-          <%= link_to 'Edit', edit_contact_path(contact) %>
-          <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to edit_contact_path(contact) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit
+            <% end %>
+            <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+              Delete
+            <% end %>
         <% end %>
       </div>
     </div>
@@ -24,3 +32,4 @@
 <% if user_signed_in? %>
   <%= link_to 'New Contact', new_contact_path %>
 <% end %>
+
