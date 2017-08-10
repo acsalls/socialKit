@@ -1,35 +1,47 @@
+
+
+<!--<p id="notice"><%= notice %></p>-->
+
+
 <%= render 'pages/home' unless user_signed_in? %>
+<% if user_signed_in? %>
 
-<p id="notice"><%= notice %></p>
+  <h1>Contacts</h1>
+  <%= link_to 'New Contact', new_contact_path, class: "btn btn-primary" %>
 
-<h1>Contacts</h1>
 
+  <div id="contacts" class="transitions-enabled">
+    <% @contacts.each do |contact| %>
+      <div class="box panel panel-default">
+       <div class="panel-body">
+          <%= image_tag contact.image.url(:medium) %>
+          <%= contact.description %>
+          <strong><%= contact.user.email if contact.user %></strong>
+          <%= link_to 'Show', contact_path(contact) %>
 
-<div id="contacts" class="transitions-enabled">
-  <% @contacts.each do |contact| %>
-    <div class="box panel panel-default">
-     <div class="panel-body">
-        <%= contact.description %>
-        <strong><%= contact.user.email if contact.user %></strong>
-        <%= link_to 'Show', contact_path(contact) %>
-        <% if contact.user == current_user %>
-            <%= link_to edit_contact_path(contact) do %>
-              <span class="glyphicon glyphicon-edit"></span>
-              Edit
-            <% end %>
-            <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <span class="glyphicon glyphicon-trash"></span>
-              Delete
-            <% end %>
-        <% end %>
+          <% if contact.user == current_user %>
+              <%= link_to edit_contact_path(contact) do %>
+                <span class="glyphicon glyphicon-edit"></span>
+                Edit
+              <% end %>
+              <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-trash"></span>
+                Delete
+              <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+
+  </div>
+<% end %>
+
 
 <br>
 
-<% if user_signed_in? %>
-  <%= link_to 'New Contact', new_contact_path %>
-<% end %>
+<div class="center">
+   <%= will_paginate @contacts, renderer: BootstrapPagination::Rails %>
+</div>
+
+
 

@@ -39,7 +39,9 @@ gem 'bootstrap-sass'
 
 gem 'jquery-turbolinks'
 gem 'masonry-rails'
-
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
+gem 'paperclip', '~> 4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -7,6 +7,9 @@
         TEST
       </div>
       <div class="panel-body">
+        <%= image_tag @contact.image.url(:medium) %>
+
+
         <p><%= @contact.description %></p>
         <p><strong><%= @contact.user.email if @contact.user %></strong></p>
 
