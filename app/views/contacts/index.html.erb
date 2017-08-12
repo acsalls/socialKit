@@ -13,8 +13,8 @@
   <div id="contacts" class="transitions-enabled">
     <% @contacts.each do |contact| %>
       <div class="box panel panel-default">
-       <div class="panel-body">
-          <%= image_tag contact.image.url(:medium) %>
+        <%= image_tag contact.image.url(:medium) %>
+          <div class="panel-body">
           <%= contact.description %>
           <strong><%= contact.user.email if contact.user %></strong>
           <%= link_to 'Show', contact_path(contact) %>
