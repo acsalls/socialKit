@@ -15,11 +15,12 @@
       <div class="box panel panel-default">
         <%= image_tag contact.image.url(:medium) %>
           <div class="panel-body">
-          <%= contact.description %>
-          <strong><%= contact.user.email if contact.user %></strong>
-          <%= link_to 'Show', contact_path(contact) %>
+            <p><strong>name:</strong> <%= contact.first_name %> <%= contact.last_name %></p>
+            <p><strong>e:</strong> <%= contact.email %></p>
+            <p><strong>p:</strong> <%= contact.phone_number %></p>        
+            <%= link_to 'Show', contact_path(contact) %>
 
-          <% if contact.user == current_user %>
+            <% if contact.user == current_user %>
               <%= link_to edit_contact_path(contact) do %>
                 <span class="glyphicon glyphicon-edit"></span>
                 Edit

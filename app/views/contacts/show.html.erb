@@ -10,9 +10,9 @@
         <%= image_tag @contact.image.url(:medium) %>
 
 
-        <p><%= @contact.description %></p>
-        <p><strong><%= @contact.user.email if @contact.user %></strong></p>
-
+        <p><strong>name:</strong> <%= @contact.first_name %> <%= @contact.last_name %></p>
+        <p><strong>e:</strong> <%= @contact.email %></p>
+        <p><strong>p:</strong> <%= @contact.phone_number %></p>        
         <% if @contact.user == current_user %>
           <%= link_to edit_contact_path(@contact) do %>
             <span class="glyphicon glyphicon-edit"></span>

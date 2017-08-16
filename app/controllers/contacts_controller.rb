@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all.order("description").paginate(:page => params[:page], :per_page => 8)
+    @contacts = Contact.all.order("description").paginate(:page => params[:page], :per_page => 3)
   end
 
   # GET /contacts/1
@@ -78,6 +78,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:description, :image)
+      params.require(:contact).permit(:description, :image, :first_name, :last_name, :email, :phone_number)
     end
 end
