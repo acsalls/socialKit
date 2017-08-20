@@ -7,7 +7,8 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.1.3'
+#5.0.2
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -21,6 +22,11 @@ gem 'coffee-rails', '~> 4.2'
 
 #use Devise for adding users
 gem 'devise'
+
+#use ice_cube for creation of recurrence rules 
+gem 'ice_cube'
+gem 'simple_calendar'
+gem 'recurring_select', github: "RundownApp/recurring_select"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
